@@ -11,8 +11,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class SyncOrganizationCommand extends Command
 {
-    private const DEFAULT_ORGANIZATION_CONFIG = 'organization.yaml';
-    private const DEFAULT_TARGETS_CONFIG = 'targets.yaml';
+    public const DEFAULT_ORGANIZATION_CONFIG = 'organization.yaml';
+    public const DEFAULT_TARGETS_CONFIG = 'targets.yaml';
 
     /** @var SynchronizationMediatorInterface */
     private $synchronizationMediator;
@@ -50,12 +50,14 @@ class SyncOrganizationCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $organization = $this->getFromYaml($this->configBasePath . '/' . $input->getOption('organization'));
-        $targets= $this->getFromYaml($this->configBasePath . '/' . $input->getOption('targets'));
-
-        $organization = $this->synchronizationMediator->initialize($targets, $organization);
+        $organization = $this->synchronizationMediator->initialize(
+            $this->getFromYaml($this->configBasePath . '/' . $input->getOption('targets')),
+            $this->getFromYaml($this->configBasePath . '/' . $input->getOption('organization'))
+        );
 
         $this->synchronizationMediator->pushOrganization($organization);
+
+        $output->writeln('Synchronization finished successfully');
     }
 
     protected function getFromYaml(string $path): array

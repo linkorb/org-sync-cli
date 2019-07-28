@@ -10,3 +10,4 @@ composer.phar
 phpunit.xml
 /.idea
 .phpunit.result.cache
+/config/synchronization

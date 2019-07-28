@@ -442,16 +442,16 @@
         },
         {
             "name": "linkorb/org-sync",
-            "version": "v0.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:rost1994/org-sync.git",
-                "reference": "c906066f324419b70b0145c672df9c0288975b30"
+                "reference": "e49edd4876bd86753be61c8f6b63ac669d3ff06d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rost1994/org-sync/zipball/c906066f324419b70b0145c672df9c0288975b30",
-                "reference": "c906066f324419b70b0145c672df9c0288975b30",
+                "url": "https://api.github.com/repos/rost1994/org-sync/zipball/e49edd4876bd86753be61c8f6b63ac669d3ff06d",
+                "reference": "e49edd4876bd86753be61c8f6b63ac669d3ff06d",
                 "shasum": ""
             },
             "require": {
@@ -483,10 +483,10 @@
             ],
             "description": "Organization sync library",
             "support": {
-                "source": "https://github.com/rost1994/org-sync/tree/master",
+                "source": "https://github.com/rost1994/org-sync/tree/v0.1.2",
                 "issues": "https://github.com/rost1994/org-sync/issues"
             },
-            "time": "2019-07-24T01:06:29+00:00"
+            "time": "2019-07-28T23:25:07+00:00"
         },
         {
             "name": "php-http/cache-plugin",
