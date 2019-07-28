@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    synchronizationConfigBasePath: '%kernel.project_dir%/synchronization'
 
 services:
     # default configuration for services in *this* file
@@ -17,5 +18,71 @@ services:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Command\SyncOrganizationCommand:
+        arguments:
+            $configBasePath: '%synchronizationConfigBasePath%'
+
+    LinkORB\OrgSync\:
+        resource: '../vendor/linkorb/org-sync/src/*'
+        exclude: '../vendor/linkorb/org-sync/src/{Exception,DTO}'
+
+    LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\AdapterFactoryPoolInterface: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\AdapterFactoryPool'
+    LinkORB\OrgSync\SynchronizationMediator\SynchronizationMediatorInterface: '@LinkORB\OrgSync\SynchronizationMediator\SynchronizationMediator'
+
+    LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\AdapterFactoryPool:
+        arguments:
+            $map:
+                LinkORB\OrgSync\DTO\Target\Camunda: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory'
+
+    LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory:
+        arguments:
+            $defaultPassSalt: '%env(APP_CAMUNDA_PASS_GENERATION_SALT)%'
+
+    LinkORB\OrgSync\Services\Target\TargetPool:
+        arguments:
+            $denormalizer: '@linkorb.org_sync.serializer'
+
+    LinkORB\OrgSync\Services\InputHandler:
+        arguments:
+            $denormalizer: '@linkorb.org_sync.serializer'
+
+    linkorb.org_sync.serializer.annotation:
+        class: Doctrine\Common\Annotations\AnnotationReader
+
+    linkorb.org_sync.serializer.annotation_loader:
+        class: Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader
+        arguments: ['@linkorb.org_sync.serializer.annotation']
+
+    linkorb.org_sync.serializer.metadata_factory:
+        class: Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory
+        arguments: ['@linkorb.org_sync.serializer.annotation_loader']
+
+    linkorb.org_sync.serializer.reflection_extractor:
+        class: Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor
+
+    linkorb.org_sync.serializer.phpdoc_extractor:
+        class: Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor
+
+    linkorb.org_sync.serializer.property_info_extractor:
+        class: Symfony\Component\PropertyInfo\PropertyInfoExtractor
+        arguments: [[], ['@linkorb.org_sync.serializer.phpdoc_extractor', '@linkorb.org_sync.serializer.reflection_extractor']]
+
+    linkorb.org_sync.serializer.object_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\ObjectNormalizer
+        arguments:
+            - '@linkorb.org_sync.serializer.metadata_factory'
+            - ~
+            - ~
+            - '@linkorb.org_sync.serializer.property_info_extractor'
+
+    linkorb.org_sync.serializer.assoc_array_normalizer:
+        class: LinkORB\OrgSync\Services\Denormalizer\AssociativeArrayDenormalizer
+
+    linkorb.org_sync.serializer:
+        class: Symfony\Component\Serializer\Serializer
+        arguments: [['@linkorb.org_sync.serializer.object_normalizer', '@linkorb.org_sync.serializer.assoc_array_normalizer']]
+
+    LinkORB\OrgSync\SynchronizationMediator\SynchronizationMediator:
+        arguments:
+            - '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\AdapterFactoryPoolInterface'
+            - '@LinkORB\OrgSync\Services\InputHandler'
