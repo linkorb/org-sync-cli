@@ -4,7 +4,7 @@
   "license": "proprietary",
   "description": "CLI integration for org-sync",
   "require": {
-    "php": "^7.3",
+    "php": "^7.2",
     "ext-ctype": "*",
     "ext-iconv": "*",
     "symfony/console": "4.3.*",
