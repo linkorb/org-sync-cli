@@ -7,16 +7,22 @@
     "php": "^7.3",
     "ext-ctype": "*",
     "ext-iconv": "*",
+    "linkorb/org-sync": "^1.1",
     "symfony/console": "4.3.*",
     "symfony/dotenv": "4.3.*",
     "symfony/flex": "^1.3.1",
     "symfony/framework-bundle": "4.3.*",
-    "symfony/yaml": "4.3.*",
-    "linkorb/org-sync": "^0.1"
+    "symfony/yaml": "4.3.*"
   },
   "require-dev": {
     "phpunit/phpunit": "^8"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:amsprost/org-sync.git"
+    }
+  ],
   "config": {
     "preferred-install": {
       "*": "dist"
@@ -33,12 +39,6 @@
       "App\\Tests\\": "tests/"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:rost1994/org-sync.git"
-    }
-  ],
   "replace": {
     "paragonie/random_compat": "2.*",
     "symfony/polyfill-ctype": "*",
