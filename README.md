@@ -78,4 +78,8 @@ camunda1:
 camunda2:
     type: 'camunda'
     baseUrl: 'http://172.17.0.1:8081/engine-rest/'
+github:
+    type: 'github'
+    token: 'yourSecretToken'
+    baseUrl: ''
 ```

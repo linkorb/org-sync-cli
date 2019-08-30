@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f46c5b55edc4a355b07e748ad19af65f",
+    "content-hash": "a6bfeb59b7fe9dd16fd508310c76b54c",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -444,20 +444,21 @@
         },
         {
             "name": "linkorb/org-sync",
-            "version": "v1.0.0",
+            "version": "v1.1.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/linkorb/org-sync.git",
-                "reference": "179b2dd3fad1020b2fc4511d78f4d60191ff25a5"
+                "url": "https://github.com/amsprost/org-sync.git",
+                "reference": "6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/linkorb/org-sync/zipball/179b2dd3fad1020b2fc4511d78f4d60191ff25a5",
-                "reference": "179b2dd3fad1020b2fc4511d78f4d60191ff25a5",
+                "url": "https://api.github.com/repos/amsprost/org-sync/zipball/6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc",
+                "reference": "6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.6",
+                "ext-json": "*",
                 "knplabs/github-api": "^2.11",
                 "php": "^7.2",
                 "php-http/guzzle6-adapter": "^1.1",
@@ -475,12 +476,19 @@
                     "LinkORB\\OrgSync\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "LinkORB\\OrgSync\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "description": "Organization sync library",
-            "time": "2019-08-02T12:06:50+00:00"
+            "support": {
+                "source": "https://github.com/amsprost/org-sync/tree/v1.1.5"
+            },
+            "time": "2019-08-30T00:00:57+00:00"
         },
         {
             "name": "php-http/cache-plugin",
@@ -3263,18 +3271,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3596,8 +3604,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3638,8 +3646,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -3687,8 +3695,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -4394,8 +4402,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -4437,8 +4445,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",

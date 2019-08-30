@@ -17,6 +17,12 @@
   "require-dev": {
     "phpunit/phpunit": "^8"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:amsprost/org-sync.git"
+    }
+  ],
   "config": {
     "preferred-install": {
       "*": "dist"

@@ -37,6 +37,12 @@ services:
         arguments:
             $map:
                 LinkORB\OrgSync\DTO\Target\Camunda: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory'
+                LinkORB\OrgSync\DTO\Target\Github: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\GithubAdapterFactory'
+
+    Github\Client:
+        class: LinkORB\OrgSync\Services\Github\AuthenticatedClientDecorator
+        arguments:
+            $apiVersion: 'v3'
 
     LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory:
         arguments:
