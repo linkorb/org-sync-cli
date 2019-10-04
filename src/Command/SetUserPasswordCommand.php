@@ -79,8 +79,13 @@ class SetUserPasswordCommand extends Command
 
             return 1;
         }
+        $userToSetPassword->setPassword($password);
 
-        $this->synchronizationMediator->setPassword($userToSetPassword, $password);
+        $userToSetPassword->setPreviousPassword(
+            $this->getPassword($input, $output, 'Previous password (if you have): ', false)
+        );
+
+        $this->synchronizationMediator->setPassword($userToSetPassword);
 
         $output->writeln('Password changed successfully');
     }
@@ -101,22 +106,29 @@ class SetUserPasswordCommand extends Command
         return null;
     }
 
-    private function getPassword(InputInterface $input, OutputInterface $output, string $message): string
+    private function getPassword(
+        InputInterface $input,
+        OutputInterface $output,
+        string $message,
+        bool $isRequired = true
+    ): ?string
     {
         $helper = $this->getHelper('question');
 
         $question = new Question($message);
         $question->setHidden(true);
         $question->setHiddenFallback(false);
-        $question->setValidator(function ($password) {
-            if (!is_string($password) || empty($password)) {
-                throw new RuntimeException(
-                    'Password should be non empty string'
-                );
-            }
+        if ($isRequired) {
+            $question->setValidator(function ($password) {
+                if (!is_string($password) || empty($password)) {
+                    throw new RuntimeException(
+                        'Password should be non empty string'
+                    );
+                }
 
-            return $password;
-        });
+                return $password;
+            });
+        }
 
         return  $helper->ask($input, $output, $question);
     }

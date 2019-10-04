@@ -38,6 +38,7 @@ services:
             $map:
                 LinkORB\OrgSync\DTO\Target\Camunda: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory'
                 LinkORB\OrgSync\DTO\Target\Github: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\GithubAdapterFactory'
+                LinkORB\OrgSync\DTO\Target\Ldap: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\LdapAdapterFactory'
 
     Github\Client:
         class: LinkORB\OrgSync\Services\Github\AuthenticatedClientDecorator

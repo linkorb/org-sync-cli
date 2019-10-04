@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6bfeb59b7fe9dd16fd508310c76b54c",
+    "content-hash": "de47cf71b8b188b0c17c0e6cac942a01",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -444,21 +444,22 @@
         },
         {
             "name": "linkorb/org-sync",
-            "version": "v1.1.5",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amsprost/org-sync.git",
-                "reference": "6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc"
+                "reference": "887c1dcbf8691eb8de14f09919732b0e4f03d82b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amsprost/org-sync/zipball/6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc",
-                "reference": "6a6f9b81eb5d6e2a910a9c86109d6a6e337261dc",
+                "url": "https://api.github.com/repos/amsprost/org-sync/zipball/887c1dcbf8691eb8de14f09919732b0e4f03d82b",
+                "reference": "887c1dcbf8691eb8de14f09919732b0e4f03d82b",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.6",
                 "ext-json": "*",
+                "ext-ldap": "*",
                 "knplabs/github-api": "^2.11",
                 "php": "^7.2",
                 "php-http/guzzle6-adapter": "^1.1",
@@ -486,9 +487,9 @@
             ],
             "description": "Organization sync library",
             "support": {
-                "source": "https://github.com/amsprost/org-sync/tree/v1.1.5"
+                "source": "https://github.com/amsprost/org-sync/tree/v1.2.0"
             },
-            "time": "2019-08-30T00:00:57+00:00"
+            "time": "2019-10-04T00:13:40+00:00"
         },
         {
             "name": "php-http/cache-plugin",

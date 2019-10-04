@@ -82,4 +82,12 @@ github:
     type: 'github'
     token: 'yourSecretToken'
     baseUrl: ''
+apacheds:
+    type: 'ldap'
+    baseUrl: 'ldap://ldap:10389'
+    bindRdn: 'uid=admin,ou=system'
+    password: 'secret'
+    domain:
+      - 'internal'
+      - 'com'
 ```
