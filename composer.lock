@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f46c5b55edc4a355b07e748ad19af65f",
+    "content-hash": "de47cf71b8b188b0c17c0e6cac942a01",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -187,6 +187,54 @@
                 "php"
             ],
             "time": "2019-07-30T19:33:28+00:00"
+        },
+        {
+            "name": "gnello/php-mattermost-driver",
+            "version": "v2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gnello/php-mattermost-driver.git",
+                "reference": "56bea0dc0e2a6cd92117ceb5842ea8b07c5691ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gnello/php-mattermost-driver/zipball/56bea0dc0e2a6cd92117ceb5842ea8b07c5691ec",
+                "reference": "56bea0dc0e2a6cd92117ceb5842ea8b07c5691ec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5.0",
+                "pimple/pimple": "~3.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gnello\\Mattermost\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luca Agnello",
+                    "email": "luca@gnello.com"
+                }
+            ],
+            "description": "The Php Driver to interact with the Mattermost Web Service API",
+            "homepage": "https://github.com/gnello/php-mattermost-driver",
+            "keywords": [
+                "Mattermost",
+                "chat"
+            ],
+            "time": "2019-09-20T20:24:14+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -444,20 +492,23 @@
         },
         {
             "name": "linkorb/org-sync",
-            "version": "v1.0.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/linkorb/org-sync.git",
-                "reference": "179b2dd3fad1020b2fc4511d78f4d60191ff25a5"
+                "url": "https://github.com/amsprost/org-sync.git",
+                "reference": "b23718b1015ec9a9f417383a03589f81fe31b916"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/linkorb/org-sync/zipball/179b2dd3fad1020b2fc4511d78f4d60191ff25a5",
-                "reference": "179b2dd3fad1020b2fc4511d78f4d60191ff25a5",
+                "url": "https://api.github.com/repos/amsprost/org-sync/zipball/b23718b1015ec9a9f417383a03589f81fe31b916",
+                "reference": "b23718b1015ec9a9f417383a03589f81fe31b916",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.6",
+                "ext-json": "*",
+                "ext-ldap": "*",
+                "gnello/php-mattermost-driver": "^2.9",
                 "knplabs/github-api": "^2.11",
                 "php": "^7.2",
                 "php-http/guzzle6-adapter": "^1.1",
@@ -475,12 +526,19 @@
                     "LinkORB\\OrgSync\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "LinkORB\\OrgSync\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "description": "Organization sync library",
-            "time": "2019-08-02T12:06:50+00:00"
+            "support": {
+                "source": "https://github.com/amsprost/org-sync/tree/v1.2.1"
+            },
+            "time": "2019-10-20T22:28:19+00:00"
         },
         {
             "name": "php-http/cache-plugin",
@@ -951,6 +1009,56 @@
                 "promise"
             ],
             "time": "2016-01-26T13:27:02+00:00"
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "v3.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "reference": "9e403941ef9d65d20cba7d54e29fe906db42cf32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2018-01-21T07:42:36+00:00"
         },
         {
             "name": "psr/cache",
@@ -3263,18 +3371,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -3596,8 +3704,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -3638,8 +3746,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -3687,8 +3795,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -4394,8 +4502,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -4437,8 +4545,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",

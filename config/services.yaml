@@ -37,10 +37,22 @@ services:
         arguments:
             $map:
                 LinkORB\OrgSync\DTO\Target\Camunda: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory'
+                LinkORB\OrgSync\DTO\Target\Github: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\GithubAdapterFactory'
+                LinkORB\OrgSync\DTO\Target\Ldap: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\LdapAdapterFactory'
+                LinkORB\OrgSync\DTO\Target\Mattermost: '@LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\MattermostAdapterFactory'
+
+    Github\Client:
+        class: Github\Client
+        arguments:
+            $apiVersion: 'v3'
 
     LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\CamundaAdapterFactory:
         arguments:
             $defaultPassSalt: '%env(APP_CAMUNDA_PASS_GENERATION_SALT)%'
+
+    LinkORB\OrgSync\SynchronizationAdapter\AdapterFactory\MattermostAdapterFactory:
+        arguments:
+            $defaultPassSalt: '%env(APP_MATTERMOST_PASS_GENERATION_SALT)%'
 
     LinkORB\OrgSync\Services\Target\TargetPool:
         arguments:
