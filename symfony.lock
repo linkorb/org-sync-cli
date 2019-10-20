@@ -1,6 +1,12 @@
 {
+    "gnello/php-mattermost-driver": {
+        "version": "v2.9.0"
+    },
     "linkorb/org-sync": {
         "version": "v1.2.0"
+    },
+    "pimple/pimple": {
+        "version": "v3.2.3"
     },
     "psr/cache": {
         "version": "1.0.1"

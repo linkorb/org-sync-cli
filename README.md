@@ -90,4 +90,10 @@ apacheds:
     domain:
       - 'internal'
       - 'com'
+mattermost:
+    type: 'mattermost'
+    baseUrl: 'http://mattermost-preview:8065'
+    token: 'mattermostToken'
+    login: 'admin'
+    password: 'secret'
 ```
